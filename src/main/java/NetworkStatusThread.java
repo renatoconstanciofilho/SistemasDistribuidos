@@ -26,7 +26,6 @@ public class NetworkStatusThread implements Runnable {
         }
     }
 
-    @Override
     public void run() {
         while (true) {
             System.out.println("Getting resource status");
