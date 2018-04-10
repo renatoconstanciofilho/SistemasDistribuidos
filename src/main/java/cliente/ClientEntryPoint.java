@@ -7,6 +7,8 @@ import consumidor.MulticastReceiver;
  */
 public class ClientEntryPoint {
     public static void main(String... args){
-        new MulticastReceiver().run();
+//        new MulticastReceiver().run();
+        Integer port = 6666;
+        MulticastListener ml = new MulticastListener(port);
     }
 }
