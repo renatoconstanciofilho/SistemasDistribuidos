@@ -83,7 +83,7 @@ public class MulticastListener {
                 Integer tcpPort = Integer.parseInt(receivePacket.getData().toString().substring(5,receivePacket.getData().toString().length()));
 
                 if (prefix.equalsIgnoreCase("Porta:")){
-
+                TCPClient tcpClient = new TCPClient(receivePacket.getAddress().toString(), tcpPort);
                 }
 
             }
