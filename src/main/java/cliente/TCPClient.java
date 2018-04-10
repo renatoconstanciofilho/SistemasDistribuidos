@@ -12,9 +12,11 @@ public class TCPClient {
     }
 
 
-    private void createTCPClient(String ip, int port) {
+    private void createTCPClient(byte[] ba, String ip, int port) {
         try {
             Socket cliente = new Socket(ip, port);
+
+            cliente.send
 
 //        TODO - Fazer outputstring do arquivo a ser enviado
             ObjectInputStream entrada = new ObjectInputStream(cliente.getInputStream());

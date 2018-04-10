@@ -6,7 +6,5 @@ public class BackupServerStartup {
 
         MulticastReceiver mr = new MulticastReceiver();
         mr.run();
-
-
     }
 }

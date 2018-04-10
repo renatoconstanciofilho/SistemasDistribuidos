@@ -1,7 +1,5 @@
 package consumidor;
 
-import cliente.MulticastPublisher;
-
 import java.io.IOException;
 
 /**
