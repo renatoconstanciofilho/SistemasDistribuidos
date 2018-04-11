@@ -15,8 +15,7 @@ public class ClientEntryPoint {
         final long NANOSEC_PER_SEC = 1000l*1000*1000;
 
 //       https://stackoverflow.com/questions/858980/file-to-byte-in-java
-        Path path = Paths.get("C:/CLTBKP/file.txt");
-        byte[] data = Files.readAllBytes(path);
+        String path = "C:/CLTBKP/file.txt";
 
         long startTime = System.nanoTime();
 
@@ -24,7 +23,7 @@ public class ClientEntryPoint {
 //          https://stackoverflow.com/questions/363681/how-do-i-generate-random-integers-within-a-specific-range-in-java
             int port = ThreadLocalRandom.current().nextInt(6667, 65535 + 1);
             MulticastReceiver mr = new MulticastReceiver();
-            mr.run(data,port);
+            mr.run(path,port);
             MulticastPublisher mp = new MulticastPublisher();
             try {
                 mp.multicast("[CLT]"+port);

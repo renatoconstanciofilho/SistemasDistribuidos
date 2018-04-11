@@ -7,12 +7,13 @@ import java.net.DatagramPacket;
 import java.net.InetAddress;
 import java.net.MulticastSocket;
 import java.net.UnknownHostException;
+import java.nio.file.Path;
 
 public class MulticastReceiver extends Thread {
     protected MulticastSocket socket = null;
     protected byte[] buf = new byte[1024];
 
-    public void run(byte[] ba, int port ) {
+    public void run(String path, int port ) {
         try {
             socket = new MulticastSocket(6666);
             InetAddress group = InetAddress.getByName("230.0.0.0");
@@ -24,7 +25,7 @@ public class MulticastReceiver extends Thread {
                         packet.getData(), 0, packet.getLength());
                 if (received.substring(0,7).equals("[BKPSRV]")) {
                     System.out.println("[INTERNAL] Servidor de BACKUP identificado no ip: " + packet.getAddress().getHostAddress());
-                    TCPClient tcpClient = new TCPClient(packet.getAddress().getHostAddress(), port);
+                    TCPServer tcpServer = new TCPServer(path, packet.getAddress().getHostAddress(), port);
                     break;
                 }
             }

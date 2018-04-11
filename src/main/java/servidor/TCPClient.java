@@ -19,6 +19,7 @@ public class TCPClient {
     }
 
     private void createTCPClient(int port) throws IOException {
+        //Initialize socket
         Socket socket = new Socket(InetAddress.getByName("localhost"), port);
         byte[] contents = new byte[10000];
 
