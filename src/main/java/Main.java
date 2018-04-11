@@ -1,7 +1,7 @@
 //    https://stackoverflow.com/questions/6999306/java-quickly-check-for-network-connection
 
 import cliente.MulticastPublisher;
-import consumidor.MulticastReceiver;
+import cliente.MulticastReceiver;
 
 import java.io.IOException;
 
