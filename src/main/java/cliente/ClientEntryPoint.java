@@ -8,6 +8,7 @@ import java.util.concurrent.ThreadLocalRandom;
  */
 public class ClientEntryPoint {
     public static void main(String... args) throws IOException {
+        System.out.println("Iniciando Cliente");
 //      https://stackoverflow.com/questions/3768258/running-loop-for-5-minutes
         final long NANOSEC_PER_SEC = 1000l*1000*1000;
 
@@ -16,17 +17,15 @@ public class ClientEntryPoint {
 
         long startTime = System.nanoTime();
 
-        while ((System.nanoTime()-startTime)< 5*60*NANOSEC_PER_SEC){
+        int port = ThreadLocalRandom.current().nextInt(6667, 65535 + 1);
+        MulticastReceiver mr = new MulticastReceiver();
+        mr.run(path,port);
+
+        while ((System.nanoTime()-startTime)< 1*60*NANOSEC_PER_SEC){
 //          https://stackoverflow.com/questions/363681/how-do-i-generate-random-integers-within-a-specific-range-in-java
-            int port = ThreadLocalRandom.current().nextInt(6667, 65535 + 1);
-            MulticastReceiver mr = new MulticastReceiver();
-            mr.run(path,port);
             MulticastPublisher mp = new MulticastPublisher();
-            try {
-                mp.multicast("[CLT]"+port);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            System.out.println("Enviando mensagem de pesquisa do servidor");
+            mp.multicast("[CLT]"+port);
         }
     }
 }
